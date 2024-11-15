@@ -18,6 +18,7 @@ namespace Tick.Identity.Services
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("Tick.API"));
             });
+            //
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
