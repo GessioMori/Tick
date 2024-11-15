@@ -46,6 +46,7 @@ namespace Tick.API.Controllers.Identity
         public async Task<IActionResult> WhoAmI()
         {
             string result = await this._identityService.WhoAmI();
+            Console.WriteLine("Result: " + result);
             return Ok(result);
         }
     }
