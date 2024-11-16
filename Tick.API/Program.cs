@@ -1,5 +1,6 @@
 using System.Net;
 using Tick.API.Exceptions;
+using Tick.API.SPA;
 using Tick.Identity.Services;
 
 namespace Tick.API
@@ -27,41 +28,16 @@ namespace Tick.API
             });
 
             builder.Services.AddOpenApi();
+
             builder.Services.AddIdentityServices(builder.Configuration);
 
-            if (builder.Environment.IsProduction())
-            {
-                builder.Services.AddSpaStaticFiles(configuration =>
-                {
-                    configuration.RootPath = Path.Combine("dist");
-                });
-            }
+            builder.Services.AddSpaStaticFilesForProduction(builder.Environment, builder.Configuration);
 
             WebApplication app = builder.Build();
 
             app.UseHttpsRedirection();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-                app.MapWhen(y => !y.Request.Path.StartsWithSegments("/api"),
-                    client =>
-                    {
-                        client.UseSpa(spa =>
-                        {
-                            spa.UseProxyToSpaDevelopmentServer("https://localhost:6363");
-                        });
-                    });
-            }
-            else
-            {
-                app.UseStaticFiles();
-                app.UseSpaStaticFiles();
-                app.UseSpa(spa =>
-                {
-                    spa.Options.SourcePath = "dist";
-                });
-            }
+            app.UseSpaConfiguration();
 
             app.UseAuthorization();
 

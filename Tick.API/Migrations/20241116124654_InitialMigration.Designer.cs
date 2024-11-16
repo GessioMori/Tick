@@ -12,8 +12,8 @@ using Tick.Identity.DataContext;
 namespace Tick.API.Migrations
 {
     [DbContext(typeof(IdentityDataContext))]
-    [Migration("20241115192956_InitialIdentityMigration")]
-    partial class InitialIdentityMigration
+    [Migration("20241116124654_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

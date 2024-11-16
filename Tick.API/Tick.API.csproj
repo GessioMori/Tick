@@ -23,6 +23,10 @@
     <ProjectReference Include="..\Tick.Shared\Tick.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
