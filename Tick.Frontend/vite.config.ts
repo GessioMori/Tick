@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import mkcert from 'vite-plugin-mkcert'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig({
-  base: './',
+  base: "./",
   server: {
-      https: true,
-      port: 6363
+    https: true,
+    port: 6363,
   },
   plugins: [react(), mkcert()],
-})
+});
