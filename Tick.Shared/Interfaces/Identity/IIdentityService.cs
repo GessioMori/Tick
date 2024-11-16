@@ -1,4 +1,4 @@
-﻿using Tick.Shared.DTO.Identity;
+﻿using Tick.Models.DTO.Identity;
 
 namespace Tick.Shared.Interfaces.Identity
 {

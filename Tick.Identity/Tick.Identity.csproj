@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tick.Models\Tick.Models.csproj" />
     <ProjectReference Include="..\Tick.Shared\Tick.Shared.csproj" />
   </ItemGroup>
 

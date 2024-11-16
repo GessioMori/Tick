@@ -2,6 +2,7 @@
 {
     public static class Paths
     {
+        public const string BaseHabitsPath = "/api/habits";
         public const string BaseAccountPath = "/api/account";
         public const string LoginPath = "login";
         public const string LogoutPath = "logout";

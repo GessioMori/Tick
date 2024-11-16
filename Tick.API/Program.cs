@@ -1,4 +1,5 @@
 using System.Net;
+using Tick.API.Configurations;
 using Tick.API.Exceptions;
 using Tick.API.SPA;
 using Tick.Identity.Services;
@@ -30,6 +31,8 @@ namespace Tick.API
             builder.Services.AddOpenApi();
 
             builder.Services.AddIdentityServices(builder.Configuration);
+
+            builder.Services.AddHabitServices(builder.Configuration);
 
             builder.Services.AddSpaStaticFilesForProduction(builder.Environment, builder.Configuration);
 

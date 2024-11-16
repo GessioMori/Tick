@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Tick.Models\Tick.Models.csproj" />
+    <ProjectReference Include="..\Tick.Shared\Tick.Shared.csproj" />
   </ItemGroup>
 
 </Project>

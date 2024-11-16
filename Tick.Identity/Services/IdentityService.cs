@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Tick.Identity.Models;
-using Tick.Shared.DTO.Identity;
+using Tick.Models.DTO.Identity;
 using Tick.Shared.Interfaces.Identity;
 
 namespace Tick.Identity.Services

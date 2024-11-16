@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
@@ -20,6 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tick.Identity\Tick.Identity.csproj" />
+    <ProjectReference Include="..\Tick.Infra\Tick.Infra.csproj" />
+    <ProjectReference Include="..\Tick.Models\Tick.Models.csproj" />
+    <ProjectReference Include="..\Tick.Services\Tick.Services.csproj" />
     <ProjectReference Include="..\Tick.Shared\Tick.Shared.csproj" />
   </ItemGroup>
 
