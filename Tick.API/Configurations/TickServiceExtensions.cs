@@ -24,7 +24,7 @@ namespace Tick.API.Configurations
 
             services.AddScoped<IUserContext, UserContext>();
             services.AddScoped<ITickDataRepository, TickDataRepository>();
-            services.AddScoped<ITickServices, TickServices>();
+            services.AddScoped<IHabitsServices, HabitsServices>();
 
             return services;
         }

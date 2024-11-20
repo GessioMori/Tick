@@ -2,7 +2,7 @@
 
 namespace Tick.Shared.Interfaces
 {
-    public interface ITickServices
+    public interface IHabitsServices
     {
         Task<IEnumerable<HabitOutputDTO>> GetAllHabitsByUserAsync();
         Task<HabitOutputDTO> InsertHabitAsync(HabitInputDTO habit);

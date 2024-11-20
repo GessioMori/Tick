@@ -44,6 +44,8 @@ namespace Tick.API
 
             app.UseAuthorization();
 
+            app.MapOpenApi();
+
             app.MapControllers();
 
             app.Run();

@@ -7,7 +7,8 @@
             string? spaDevServerUrl = app.Configuration["Spa:DevelopmentServerUrl"];
             string? spaStaticFilesPath = app.Configuration["Spa:StaticFilesPath"] ?? "dist";
 
-            app.MapWhen(context => !context.Request.Path.StartsWithSegments("/api"),
+            app.MapWhen(context => !context.Request.Path.StartsWithSegments("/api") &&
+                !context.Request.Path.StartsWithSegments("/openapi"),
                 appBuilder =>
                 {
                     if (app.Environment.IsDevelopment() && !string.IsNullOrEmpty(spaDevServerUrl))

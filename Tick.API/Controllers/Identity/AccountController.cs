@@ -2,6 +2,7 @@
 using Tick.Shared.Consts;
 using Tick.Models.DTO.Identity;
 using Tick.Shared.Interfaces.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tick.API.Controllers.Identity
 {
@@ -32,7 +33,7 @@ namespace Tick.API.Controllers.Identity
                 return Unauthorized("Invalid credentials.");
             }
 
-            return Ok("Login successful.");
+            return Ok();
         }
 
         [HttpPost(Paths.LogoutPath)]
@@ -43,10 +44,10 @@ namespace Tick.API.Controllers.Identity
         }
 
         [HttpGet("whoami")]
+        [Authorize]
         public async Task<IActionResult> WhoAmI()
         {
             string result = await this._identityService.WhoAmI();
-            Console.WriteLine("Result: " + result);
             return Ok(result);
         }
     }

@@ -5,13 +5,13 @@ using Tick.Shared.Interfaces;
 
 namespace Tick.Services
 {
-    public class TickServices : ITickServices
+    public class HabitsServices : IHabitsServices
     {
         private readonly ITickDataRepository _tickRepository;
         private readonly IUserContext _userContext;
         private readonly IMapper _mapper;
 
-        public TickServices(ITickDataRepository tickRepository, IUserContext userContext, IMapper mapper)
+        public HabitsServices(ITickDataRepository tickRepository, IUserContext userContext, IMapper mapper)
         {
             this._tickRepository = tickRepository;
             this._userContext = userContext;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Tick.Models.DTO.Habits;
 using Tick.Shared.Consts;
 using Tick.Shared.Interfaces;
@@ -7,11 +8,12 @@ namespace Tick.API.Controllers.Habits
 {
     [Route(Paths.BaseHabitsPath)]
     [ApiController]
+    [Authorize]
     public class HabitsController : ControllerBase
     {
-        private readonly ITickServices _habitService;
+        private readonly IHabitsServices _habitService;
 
-        public HabitsController(ITickServices habitService)
+        public HabitsController(IHabitsServices habitService)
         {
             this._habitService = habitService;
         }

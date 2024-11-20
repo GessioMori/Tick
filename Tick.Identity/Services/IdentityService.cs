@@ -52,7 +52,12 @@ namespace Tick.Identity.Services
         {
             ApplicationUser? user = await this._userManager.GetUserAsync(this._signInManager.Context.User);
 
-            return user?.FullName ?? string.Empty;
+            if (user == null)
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            return user.FullName;
         }
     }
 }
