@@ -17,7 +17,11 @@ namespace Tick.API
             builder.Services.AddControllers(options =>
             {
                 options.Filters.Add(new GlobalExceptionFilter());
-            });
+            })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                });
 
             builder.WebHost.ConfigureKestrel(options =>
             {

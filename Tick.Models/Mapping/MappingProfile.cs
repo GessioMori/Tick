@@ -13,6 +13,9 @@ namespace Tick.Models.Mapping
                 .ForMember(dest => dest.Frequency, opt => opt.MapFrom<HabitFrequencyResolver>());
             CreateMap<Habit, HabitOutputDTO>()
                 .ForMember(dest => dest.Frequency, opt => opt.MapFrom<HabitFrequencyResolver>());
+
+            CreateMap<HabitCompletionInputDTO, HabitCompletion>();
+            CreateMap<HabitCompletion, HabitCompletionOutputDTO>();
         }
     }
 

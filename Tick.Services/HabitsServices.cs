@@ -22,7 +22,7 @@ namespace Tick.Services
         {
             string userId = GetCurrentUserId();
 
-            IEnumerable<Habit> habits = await this._tickRepository.GetAllHabitsByUserIdAsync(userId);
+            IEnumerable<Habit> habits = await this._tickRepository.GetAllHabitsWithCompletionsByUserIdAsync(userId);
 
             return _mapper.Map<IEnumerable<HabitOutputDTO>>(habits);
         }
@@ -44,6 +44,29 @@ namespace Tick.Services
             await this._tickRepository.InsertHabitAsync(habit);
 
             HabitOutputDTO output = this._mapper.Map<HabitOutputDTO>(habit);
+
+            return output;
+        }
+
+        public async Task<HabitCompletionOutputDTO> InsertHabitCompletionAsync(HabitCompletionInputDTO habitCompletionInput)
+        {
+            string userId = GetCurrentUserId();
+
+            Habit _ = await this._tickRepository.GetHabitByIdAsync(habitCompletionInput.HabitId)
+                ?? throw new Exception($"No habit found with id {habitCompletionInput.HabitId}.");
+
+            HabitCompletion habitCompletion = this._mapper.Map<HabitCompletion>(habitCompletionInput);
+
+            habitCompletion.UserId = userId;
+            habitCompletion.CreatedAt = DateTime.UtcNow;
+            habitCompletion.UpdatedAt = DateTime.UtcNow;
+            habitCompletion.CompletionDate = habitCompletionInput.CompletionDate == DateTime.MinValue ?
+                DateTime.UtcNow :
+                habitCompletion.CompletionDate;
+
+            await this._tickRepository.InsertHabitCompletionAsync(habitCompletion);
+
+            HabitCompletionOutputDTO output = this._mapper.Map<HabitCompletionOutputDTO>(habitCompletion);
 
             return output;
         }

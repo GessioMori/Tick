@@ -28,7 +28,7 @@ namespace Tick.API.Controllers.Habits
 
             try
             {
-                HabitOutputDTO habit = await _habitService.InsertHabitAsync(habitInput);
+                HabitOutputDTO habit = await this._habitService.InsertHabitAsync(habitInput);
                 return CreatedAtAction(nameof(InsertHabit), new { id = habit.Id }, habit);
             }
             catch (Exception ex)
@@ -37,12 +37,36 @@ namespace Tick.API.Controllers.Habits
             }
         }
 
+        [HttpPost("complete")]
+        public async Task<IActionResult> InsertHabitCompletion([FromBody] HabitCompletionInputDTO habitCompletionInput)
+        {
+            if (habitCompletionInput == null)
+            {
+                return BadRequest("Habit completion input cannot be null.");
+            }
+
+            try
+            {
+                HabitCompletionOutputDTO habitCompletion = await this._habitService
+                    .InsertHabitCompletionAsync(habitCompletionInput);
+                return CreatedAtAction(nameof(InsertHabitCompletion), new { id = habitCompletion.Id }, habitCompletion);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Message = "An error occurred while inserting the habit completion.",
+                    Details = ex.Message
+                });
+            }
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HabitOutputDTO>>> GetAllHabitsByUserAsync()
         {
             try
             {
-                IEnumerable<HabitOutputDTO> habits = await _habitService.GetAllHabitsByUserAsync();
+                IEnumerable<HabitOutputDTO> habits = await this._habitService.GetAllHabitsByUserAsync();
 
                 if (habits == null || habits.Any() == false)
                 {

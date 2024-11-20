@@ -43,8 +43,8 @@ namespace Tick.API.Controllers.Identity
             return Ok("Logged out successfully.");
         }
 
-        [HttpGet("whoami")]
         [Authorize]
+        [HttpGet("whoami")]
         public async Task<IActionResult> WhoAmI()
         {
             string result = await this._identityService.WhoAmI();

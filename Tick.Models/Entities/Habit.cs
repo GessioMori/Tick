@@ -10,6 +10,7 @@ namespace Tick.Models.Entities
         public string Description { get; set; } = string.Empty;
         public HabitFrequency Frequency { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<HabitCompletion> HabitCompletions { get; set; } = new List<HabitCompletion>();
     }
 }

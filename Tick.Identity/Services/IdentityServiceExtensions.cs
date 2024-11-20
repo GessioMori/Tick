@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,12 @@ namespace Tick.Identity.Services
                 options.LogoutPath = Paths.BaseAccountPath + "/" + Paths.LogoutPath;
                 options.AccessDeniedPath = Paths.BaseAccountPath + "/" + Paths.AccessDeniedPath;
                 options.SlidingExpiration = true;
+                options.Events.OnRedirectToAccessDenied =
+                    options.Events.OnRedirectToLogin = context =>
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        return Task.CompletedTask;
+                    };
             });
 
             services.AddScoped<IIdentityService, IdentityService>();

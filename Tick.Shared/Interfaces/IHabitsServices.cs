@@ -6,5 +6,6 @@ namespace Tick.Shared.Interfaces
     {
         Task<IEnumerable<HabitOutputDTO>> GetAllHabitsByUserAsync();
         Task<HabitOutputDTO> InsertHabitAsync(HabitInputDTO habit);
+        Task<HabitCompletionOutputDTO> InsertHabitCompletionAsync(HabitCompletionInputDTO habitCompletion);
     }
 }
